@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class ImageGalleryUsecase @Inject constructor(val imageGalleryRepository: ImageGalleryRepository){
+class ImageGalleryUsecase @Inject constructor(private val imageGalleryRepository: ImageGalleryRepository) {
     suspend fun getPhotos(): Flow<Results<List<Photo>>> =
         withContext(Dispatchers.IO) {
             imageGalleryRepository.getPhotos()

@@ -36,7 +36,7 @@ class ImageGalleryAdapter @Inject constructor() : ListAdapter<Photo, ImageGaller
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Photo) {
             Glide.with(binding.root)
-                .load(item?.urlS)
+                .load(item.urlS)
                 .into(binding.image)
 
             itemView.setOnClickListener {

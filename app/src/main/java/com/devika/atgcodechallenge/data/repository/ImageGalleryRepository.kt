@@ -14,8 +14,8 @@ class ImageGalleryRepository @Inject constructor(
 ) {
     suspend fun getPhotos(): Flow<List<Photo>> {
         if (networkManager.isNetworkAvailable()) {
-            val photos = apiService.getPhotos()
-            imageGalleryDao.insertImageGalleryData(photos.photos.photo)
+            val photosList = apiService.getPhotos().photos.photo
+            imageGalleryDao.insertImageGalleryData(photosList)
         }
         return imageGalleryDao.getPhotos()
     }

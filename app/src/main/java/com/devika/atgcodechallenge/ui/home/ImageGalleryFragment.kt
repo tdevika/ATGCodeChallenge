@@ -1,6 +1,6 @@
 package com.devika.atgcodechallenge.ui.home
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.devika.atgcodechallenge.ImageGalleryApplication
 import com.devika.atgcodechallenge.R
 import com.devika.atgcodechallenge.databinding.FragmentImageGalleryBinding
-import com.devika.atgcodechallenge.ui.photo.PhotoFragment
 import com.devika.atgcodechallenge.utils.ImageGalleryViewModelFactory
 import com.devika.atgcodechallenge.utils.UiState
 import com.devika.atgcodechallenge.utils.getList
@@ -30,12 +29,13 @@ class ImageGalleryFragment : Fragment() {
     @Inject
     lateinit var imageGalleryAdapter: ImageGalleryAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (requireActivity().applicationContext as ImageGalleryApplication).appComponent.inject(this)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (context.applicationContext as ImageGalleryApplication).appComponent.inject(this)
     }
 
     lateinit var binding: FragmentImageGalleryBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

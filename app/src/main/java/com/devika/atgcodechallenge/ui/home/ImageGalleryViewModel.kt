@@ -9,15 +9,14 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class ImageGalleryViewModel @Inject constructor(val imageGalleryUsecase: ImageGalleryUsecase) : ViewModel(),
-    ClickListener {
+class ImageGalleryViewModel @Inject constructor(private val imageGalleryUsecase: ImageGalleryUsecase) : ViewModel(){
     val uiState = MutableLiveData<UiState>()
 
     init {
         getPhotos()
     }
 
-    fun getPhotos() {
+    private fun getPhotos() {
         viewModelScope.launch {
             imageGalleryUsecase.getPhotos().collectLatest {
                 when (it) {
@@ -29,14 +28,4 @@ class ImageGalleryViewModel @Inject constructor(val imageGalleryUsecase: ImageGa
 
         }
     }
-
-    override fun onClick(url: String) {
-
-    }
-
-
-}
-
-interface ClickListener{
-    fun onClick(url:String)
 }
