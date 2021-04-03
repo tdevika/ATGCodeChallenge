@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    app:startDestination="@id/imageGalleryFragment">
+
+    <fragment
+        android:id="@+id/imageGalleryFragment"
+        android:name="com.devika.atgcodechallenge.ui.home.ImageGalleryFragment"
+        android:label="ATGImageGallery" >
+        <action
+            android:id="@+id/action_imageGalleryFragment_to_photoFragment"
+            app:destination="@id/photoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoFragment"
+        android:name="com.devika.atgcodechallenge.ui.photo.PhotoFragment"
+        android:label="PhotoFragment" >
+        <argument
+            android:name="photo"
+            app:argType="string" />
+    </fragment>
+</navigation>
