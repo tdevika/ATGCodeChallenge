@@ -64,9 +64,6 @@ class ImageGalleryFragment : Fragment() {
                 imageGalleryAdapter.submitList(it.value.getList())
             }
         })
-        imageGalleryAdapter.setListener { url: String ->
-            findNavController().navigate(ImageGalleryFragmentDirections.actionImageGalleryFragmentToPhotoFragment(url))
-        }
 
     }
 

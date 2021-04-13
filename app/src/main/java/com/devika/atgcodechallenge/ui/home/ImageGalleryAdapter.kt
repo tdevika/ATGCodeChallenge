@@ -2,6 +2,7 @@ package com.devika.atgcodechallenge.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
@@ -27,10 +28,6 @@ class ImageGalleryAdapter @Inject constructor() : ListAdapter<Photo, ImageGaller
         holder.bind(getItem(position))
     }
 
-    fun setListener(function: (String) -> Unit) {
-        this.callback = function
-    }
-
 
     inner class ImageGalleryViewHolder(private val binding: ItemsGalleryBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -40,7 +37,7 @@ class ImageGalleryAdapter @Inject constructor() : ListAdapter<Photo, ImageGaller
                 .into(binding.image)
 
             itemView.setOnClickListener {
-               callback(item.urlS)
+                it.findNavController().navigate(ImageGalleryFragmentDirections.actionImageGalleryFragmentToPhotoFragment(item.urlS))
             }
         }
     }
