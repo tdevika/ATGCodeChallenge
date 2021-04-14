@@ -4,5 +4,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-  steps:
-    - run: echo "Hello Devika"
+    steps:
+      - name: Run a one-line script
+        run: echo "Hello Devika"
